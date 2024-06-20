@@ -32,17 +32,17 @@ const MenuItems = ({Menudata})=>{
         </main>
     )
 }
-const Items =({name,price,imageurl})=>{
+const Items =({name,price,imageurl,soldOut})=>{
     return(
         
-            <div className={`menuitem flex item-center `}>
+            <div className={`menuitem flex item-center ${soldOut&&"filter"}`}>
                 <img src={imageurl} alt=""  className="pizza-img"/>
                 <div className="flex flex-column container2">
                     <span className="bold">{name}</span>
                     <span>Tomato, Mozzarella, Basil</span>
                     <div className="flex item-center flex-warp price-and-quantity">
                         <span>€{price}.0</span>
-                        <div className="flex options-container">
+                        <div className={`flex options-container ${soldOut&&"none"}`}>
                             <div className="flex center inc-dec-container">
                                 <div className="inc-dec flex center"><span>-</span></div>
                                 <span>1</span>

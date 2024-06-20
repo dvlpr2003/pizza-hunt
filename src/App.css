@@ -103,8 +103,15 @@ homecontent {
     gap: 1.4rem;
     padding-left: .5rem;
     padding-bottom: .5rem;
-    filter: grayscale(100%);
+
     z-index: -1;
+}
+.filter {
+    filter: grayscale(100%);
+
+}
+.none {
+    display: none;
 }
 .pizza-img {
     height: 5rem;
