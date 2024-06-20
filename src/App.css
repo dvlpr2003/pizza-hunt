@@ -1,0 +1,151 @@
+*,::before,::after{
+    box-sizing: border-box;
+    
+}
+main{
+    
+
+    overflow-x: scroll;
+    
+
+}
+.main-gap {
+    gap: 2rem;
+}
+.header {
+    border: 1px solid #003cff;
+    height: auto;
+    background-color: #003cff;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    position:sticky;
+    top: 0;
+}
+.bold {
+    font-weight: bold;
+}
+.flex {
+    display: flex;
+}
+.item-center {
+    align-items: center;
+}
+.flex-column {
+    flex-direction: column;
+
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.gap {
+    gap: 1rem;
+}
+.justify-content {
+    justify-content: space-between;
+}
+
+.pad-t-b {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+.pad-r-l {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.input-border {
+    border: none;
+}
+
+
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+homecontent {
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+.home-cont-txt {
+    font-family: Roboto,sans-serif;
+    font-size: 1.8rem;
+    word-spacing: 5px;
+}
+.p-cont-txt {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1.3rem;
+    word-spacing: 5px;
+}
+.radius {
+    border-radius: 20px;
+}
+.homecontent {
+    border: 1px solid black;
+}
+.name-input {
+    border: 1px solid rgb(204, 204, 204);
+    width: 15rem;
+}
+
+.menuitem{
+    border-bottom: 1px solid #dedefb;
+    width: 40rem;
+    height: 6rem;
+    gap: 1.4rem;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+    filter: grayscale(100%);
+    z-index: -1;
+}
+.pizza-img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 10px;
+}
+.inc-dec-container{
+    gap: .6rem;
+}
+.inc-dec {
+    border: 1px solid #2121fa;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #2121fa;
+    color: white;
+    
+}
+.add-to-cart-and-dlt {
+    border: 1px solid #2121fa;
+    background-color: #2121fa;
+    color: white;
+    border-radius: 20px;
+    width: auto;
+    height: 2.3rem;
+    font-size: .8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.container2 {
+    width: 100%;
+    gap: .2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.price-and-quantity {
+    padding-right: 1rem;
+}
+.options-container {
+    gap: 1rem;
+    margin-left: auto;
+    justify-content: flex-end;
+}
