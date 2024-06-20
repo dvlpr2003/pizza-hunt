@@ -54,6 +54,7 @@ const Items =({name,price,imageurl,soldOut})=>{
                         </div>
 
                     </div>
+                    <span>{soldOut? "SOLD OUT":""}</span>
 
                 </div>
             </div>
