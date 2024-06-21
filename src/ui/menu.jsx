@@ -19,6 +19,7 @@ const Menu = ()=>{
         {
             Menudata&&<MenuItems Menudata={Menudata}/>
         }
+        <CartNav/>
         </>
     )
 }
@@ -59,6 +60,15 @@ const Items =({name,price,imageurl,soldOut})=>{
                 </div>
             </div>
        
+    )
+}
+
+
+export const CartNav = ()=>{
+    return (
+        <div className="cart-nav">
+            
+        </div>
     )
 }
 

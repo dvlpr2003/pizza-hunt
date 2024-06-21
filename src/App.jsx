@@ -5,12 +5,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Menu from "./ui/Menu";
+import Menu from "./ui/menu";
 
 
 function App() {
 
   const router = createBrowserRouter([
+   
     {
       path:"/",
       element:(<Home/>)
@@ -19,13 +20,16 @@ function App() {
       path:"menu",
       element:(<Menu/>)
     }
+
   ])
 
   return (
     <>
      <RouterProvider router={router} />
+     
     </>
   )
 }
+
 
 export default App

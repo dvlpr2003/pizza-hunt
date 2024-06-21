@@ -156,3 +156,17 @@ homecontent {
     margin-left: auto;
     justify-content: flex-end;
 }
+
+
+.cart-nav{
+    border:1px solid black;
+   
+    position: fixed;
+    bottom: 0;
+
+   
+  
+    width: 100%;
+    height: 4rem;
+    background-color: black;
+}
