@@ -67,7 +67,7 @@ const Items =({name,price,imageurl,soldOut})=>{
 export const CartNav = ()=>{
     return (
         <div className="cart-nav">
-            
+            <p>hello</p>
         </div>
     )
 }
