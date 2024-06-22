@@ -1,13 +1,19 @@
 *,::before,::after{
+
     box-sizing: border-box;
-    
+
 }
 main{
-    
-
     overflow-x: scroll;
-    
-
+    width: auto;
+    border: 1px solid red;
+}
+.main-padding{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.gap-1rem {
+    gap: .3rem;
 }
 .main-gap {
     gap: 2rem;
@@ -43,13 +49,16 @@ main{
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .gap {
     gap: 1rem;
 }
 .justify-content {
     justify-content: space-between;
 }
-
+.justify-content-center{
+    justify-content: center;
+}
 .pad-t-b {
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -97,67 +106,64 @@ homecontent {
     width: 15rem;
 }
 
-.menuitem{
-    border-bottom: 1px solid #dedefb;
-    width: 40rem;
-    height: 6rem;
-    gap: 1.4rem;
-    padding-left: .5rem;
-    padding-bottom: .5rem;
 
-    z-index: -1;
-}
-.filter {
-    filter: grayscale(100%);
-
-}
 .none {
     display: none;
 }
+
+
+.ingredients {
+    gap: .4rem;
+}
 .pizza-img {
-    height: 5rem;
-    width: 5rem;
-    border-radius: 10px;
+    height: 6.5rem;
+    width: 6.5rem;
+    border-radius:10px ;
 }
-.inc-dec-container{
-    gap: .6rem;
-}
-.inc-dec {
-    border: 1px solid #2121fa;
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #2121fa;
-    color: white;
+
+.menu-list{
+    width: auto;
+    /* border: 1px solid black; */
+    gap: 2rem;
+    list-style: none;
+    
+
     
 }
-.add-to-cart-and-dlt {
-    border: 1px solid #2121fa;
-    background-color: #2121fa;
+.pizza-item{
+    gap: 1rem;
+    
+}
+.Btn-cart{
+    border: 1px solid #003cff;
+    background-color: #003cff;
     color: white;
-    border-radius: 20px;
+    height: 2rem;
     width: auto;
-    height: 2.3rem;
-    font-size: .8rem;
     padding-left: 1rem;
     padding-right: 1rem;
-}
+    border-radius: 20px;
 
-.container2 {
-    width: 100%;
-    gap: .2rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.price-and-quantity {
-    padding-right: 1rem;
-}
-.options-container {
-    gap: 1rem;
-    margin-left: auto;
-    justify-content: flex-end;
-}
+.inc-dec-btn {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid #003cff;
+    background-color: #003cff;
+    color: white;
 
+}
+.width-auto {
+    width: auto;
+}
+.width-100{
+    width:100%;
+}
+.border {
+    border: 1px solid red;
+    /* width: auto; */
+}
 
 .cart-nav{
     border:1px solid black;
@@ -167,4 +173,14 @@ homecontent {
     height: 2.5rem;
     background-color: black;
     color: white;
+}
+.xxx {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+   
+    
+    
+
 }

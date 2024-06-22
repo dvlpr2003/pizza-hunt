@@ -10,7 +10,8 @@ const Menu = ()=>{
         async function callBack(){
             setMenudata(await getData())
         }
-        callBack()     
+        callBack()
+
     },[])
     console.log(Menudata)
     return(
@@ -23,47 +24,49 @@ const Menu = ()=>{
         </>
     )
 }
-
 const MenuItems = ({Menudata})=>{
+ 
     return(
-        <main className = "flex flex-column center scroll main-gap">
+        
+        <main   className = "flex flex-column center scroll main-padding">
+
+            <div className="flex flex-column center width-100 border">
             {
-            Menudata.map((e)=><Items key={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut}/>)
+            Menudata.map((e)=><Items key={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients}/>)
             }
+
+            </div>
+      
         </main>
     )
 }
-const Items =({name,price,imageurl,soldOut})=>{
+const Items =({name,price,imageurl,soldOut,ingredients})=>{
+
     return(
-        
-            <div className={`menuitem flex item-center ${soldOut&&"filter"}`}>
-                <img src={imageurl} alt=""  className="pizza-img"/>
-                <div className="flex flex-column container2">
-                    <span className="bold">{name}</span>
-                    <span>Tomato, Mozzarella, Basil</span>
-                    <div className="flex item-center flex-warp price-and-quantity">
-                        <span>€{price}.0</span>
-                        <div className={`flex options-container ${soldOut&&"none"}`}>
-                            <div className="flex center inc-dec-container">
-                                <div className="inc-dec flex center"><span>-</span></div>
-                                <span>1</span>
-                                <div className="inc-dec flex center"> <span>+</span></div>
-                            </div>
-                            <button className="add-to-cart-and-dlt">
-                                DELETE
-                            </button>
+        <li className="flex  pizza-item  width-100 border">
+            <img src={imageurl} alt="" onClick={()=>alert("hi")} className="pizza-img"/>
+            <div className="flex flex-column justify-content-center">
+                <span>{name}</span>
+                <div className="flex ingredients ">
+                {
+                ingredients.map((e)=><span>{e}</span>)
+                }
+                </div>
+                <div className="flex item-center ">
+                    <span>€{price}.00</span>
+                    <div className="flex item-center gap">
+                        <div className="flex item-center gap-1rem">
+                            <button className="inc-dec-btn">-</button>
+                            <span>1</span>
+                            <button className="inc-dec-btn">+</button>
                         </div>
-
+                        <button className="Btn-cart">Delete</button>
                     </div>
-                    <span>{soldOut? "SOLD OUT":""}</span>
-
                 </div>
             </div>
-       
+        </li>
     )
 }
-
-
 export const CartNav = ()=>{
     return (
         <div className="cart-nav">
@@ -71,6 +74,4 @@ export const CartNav = ()=>{
         </div>
     )
 }
-
-
 export default Menu;

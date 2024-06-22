@@ -1,11 +1,11 @@
 import Home from "./ui/Home"
+import Menu from "./ui/menu";
 
 import "./App.css"
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Menu from "./ui/menu";
 
 
 function App() {
