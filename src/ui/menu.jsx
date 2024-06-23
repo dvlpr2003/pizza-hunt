@@ -46,19 +46,19 @@ const Items =({name,price,imageurl,soldOut,ingredients})=>{
     return(
        
         
-        <div className="flex  pizza-item">
+        <div className={`flex  pizza-item ${soldOut&&"filter"}`}>
             <img src={imageurl} alt="" onClick={()=>alert("hi")} className="pizza-img"/>
-            <div className="flex flex-column justify-content-center width-100">
-                <span>{name}</span>
-                <div className="flex ingredients felx-wrap ">
+            <div className="flex flex-column justify-content-center width-100 gap-1rem">
+                <span className="bold font-roboto">{name}</span>
+                <div className="flex ingredients felx-wrap font-roboto">
                 {
                 ingredients.map((e)=><span>{e}</span>)
                 }
                 </div>
-                <div className="flex item-center flex-wrap">
-                    <span>€{price}.00</span>
-                    <div className="flex item-center gap price-options margin-left-auto ">
-                        <div className="flex item-center gap-1rem ">
+                <div className={`flex item-center flex-wrap ${soldOut&&"none"} gap-1rem`}>
+                    <span className="font-roboto">€{price}.00</span>
+                    <div className="flex item-center gap-1rem price-options margin-left-auto ">
+                        <div className="flex item-center gap ">
                             <button className="inc-dec-btn">-</button>
                             <span>1</span>
                             <button className="inc-dec-btn">+</button>
@@ -66,6 +66,7 @@ const Items =({name,price,imageurl,soldOut,ingredients})=>{
                         <button className="Btn-cart">Delete</button>
                     </div>
                 </div>
+                <span className="font-roboto">{soldOut?"SOLD OUT":""}</span>
             </div>
         </div>
         

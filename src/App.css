@@ -6,13 +6,12 @@
 main{
     overflow-x: scroll;
     width: auto;
-    border: 1px solid red;
 }
 .main-padding{
     padding-left: 5rem;
     padding-right: 5rem;
 }
-.gap-1rem {
+.gap {
     gap: .3rem;
 }
 .main-gap {
@@ -50,7 +49,7 @@ main{
     flex-wrap: wrap;
 }
 
-.gap {
+.gap-1rem {
     gap: 1rem;
 }
 .justify-content {
@@ -71,10 +70,15 @@ main{
     /* margin-left: auto; */
 }
 
+.font-roboto{
+    font-family: "Roboto", sans-serif;
+}
 .input-border {
     border: none;
 }
-
+.filter {
+    filter: grayscale(100%);
+}
 
 
 .center {
@@ -137,6 +141,7 @@ homecontent {
     gap: 1rem;
     width: 35rem;
     padding-bottom:1.8rem;
+    padding-top:.5rem;
     border-bottom: 1px solid #9a9999;
     
 
