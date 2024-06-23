@@ -78,6 +78,7 @@ main{
 }
 .filter {
     filter: grayscale(100%);
+    z-index: -1;
 }
 
 
