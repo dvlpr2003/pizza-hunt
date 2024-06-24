@@ -1,4 +1,4 @@
-import Header from "../component/header"
+
 import "../App.css"
 import { useEffect ,useState} from "react"
 import getData from "../services/api"
@@ -18,7 +18,6 @@ const Menu = ()=>{
     // console.log(Menudata)
     return(
         <>
-        <Header/>
         {
             Menudata&&<MenuItems Menudata={Menudata} setCart={setCart} cart={cart}/>
         }
@@ -30,7 +29,7 @@ const MenuItems = ({Menudata,setCart,cart})=>{
  
     return(
         
-        <main   className = "flex flex-column center scroll width-100 pad-t-b">
+        <div>
 
             <div className="flex flex-column center width-100 gap  ">
 
@@ -40,7 +39,7 @@ const MenuItems = ({Menudata,setCart,cart})=>{
 
             </div>
       
-        </main>
+        </div>
     )
 }
 const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
@@ -67,9 +66,7 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
         setCart([cartItems])
         
     }
-    const Count = ()=>{
 
-    }
 
     return(
        

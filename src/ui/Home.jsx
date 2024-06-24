@@ -1,12 +1,9 @@
-import Header from "../component/header";
+
 
 const Home = ()=>{
     return(
         <>
-        <Header/>
-        <main className = "flex flex-column center">
             <HomeContent/>
-        </main>
         </>
     )
 
