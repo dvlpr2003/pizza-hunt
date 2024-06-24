@@ -22,7 +22,7 @@ const Menu = ()=>{
         {
             Menudata&&<MenuItems Menudata={Menudata} setCart={setCart} cart={cart}/>
         }
-        <CartNav cart={cart}/>
+        {(cart === null) || (cart.length >0)&&<CartNav cart={cart}/>}
         </>
     )
 }
