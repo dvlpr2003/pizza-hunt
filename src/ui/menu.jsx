@@ -2,24 +2,16 @@
 import "../App.css"
 import { useEffect ,useState} from "react"
 import getData from "../services/api"
+import { useLoaderData } from "react-router-dom"
 
 const Menu = ()=>{
-    const [Menudata,setMenudata]=useState(null)
     const [cart,setCart]=useState(null)
-    console.log(cart)
-    // console.log(Menudata)
-    useEffect( ()=>{
-        async function callBack(){
-            setMenudata(await getData())
-        }
-        callBack()
-
-    },[])
-    // console.log(Menudata)
+    const menu = useLoaderData()
+    
     return(
         <>
         {
-            Menudata&&<MenuItems Menudata={Menudata} setCart={setCart} cart={cart}/>
+            menu&&<MenuItems Menudata={menu} setCart={setCart} cart={cart}/>
         }
         {(cart === null) || (cart.length >0)&&<CartNav cart={cart}/>}
         </>
@@ -34,7 +26,7 @@ const MenuItems = ({Menudata,setCart,cart})=>{
             <div className="flex flex-column center width-100 gap  ">
 
             {
-            Menudata.map((e)=><Items id={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients} setCart={setCart} cart={cart}/>)
+            Menudata.map((e)=><Items key = {e.id} id={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients} setCart={setCart} cart={cart}/>)
             }
 
             </div>
@@ -118,4 +110,6 @@ export const CartNav = ({cart})=>{
         </div>
     )
 }
+
+
 export default Menu;

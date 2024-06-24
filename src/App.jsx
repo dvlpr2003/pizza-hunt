@@ -1,5 +1,5 @@
 import Home from "./ui/Home"
-import Menu from "./ui/menu";
+import Menu  from "./ui/menu";
 
 
 import "./App.css"
@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AppLayout from "./AppLayout/AppLayout";
+import getData from "./services/api";
 
 
 function App() {
@@ -18,11 +19,15 @@ function App() {
       children:[
         {
           path:"/",
-          element:(<Home/>)
+          element:(<Home/>),
+          
+          
+
         },
         {
           path:"menu",
-          element:(<Menu/>)
+          element:(<Menu/>),
+          loader:menuloader,
         }
       ]
     },
@@ -39,6 +44,10 @@ function App() {
   )
 }
 
+async function menuloader(){
+  const menu = await getData()
+  return menu
+}
 
 export default App
 
