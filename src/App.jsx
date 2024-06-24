@@ -1,6 +1,7 @@
 import Home from "./ui/Home"
 import Menu from "./ui/menu";
 
+
 import "./App.css"
 import {
   createBrowserRouter,
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
      <RouterProvider router={router} />
+     {/* <App1/> */}
      
     </>
   )
@@ -33,3 +35,5 @@ function App() {
 
 
 export default App
+
+

@@ -15,14 +15,14 @@ const Menu = ()=>{
         callBack()
 
     },[])
-    console.log(Menudata)
+    // console.log(Menudata)
     return(
         <>
         <Header/>
         {
             Menudata&&<MenuItems Menudata={Menudata} setCart={setCart} cart={cart}/>
         }
-        <CartNav/>
+        <CartNav cart={cart}/>
         </>
     )
 }
@@ -44,8 +44,12 @@ const MenuItems = ({Menudata,setCart,cart})=>{
     )
 }
 const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
+    const Delete = (id)=>{
+        let FilteredItems = cart.filter((i)=>i.id !== id)
+        setCart(FilteredItems)
+    }
     
-    const click=()=> {
+    const addElement=()=> {
         let cartItems = {
             id:id,
             name:name,
@@ -72,12 +76,16 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
                 <div className={`flex item-center flex-wrap ${soldOut&&"none"} gap-1rem`}>
                     <span className="font-roboto">€{price}.00</span>
                     <div className="flex item-center gap-1rem price-options margin-left-auto ">
-                        <div className="flex item-center gap ">
+                        {
+                        (cart&&cart.some((item)=>item.id===id))?<div className="flex item-center gap ">
                             <button className="inc-dec-btn">-</button>
                             <span>1</span>
-                            <button className="inc-dec-btn">+</button>
-                        </div>
-                        <button className="Btn-cart" onClick={click}>Delete</button>
+                            <button className="inc-dec-btn" onClick={addElement}>+</button>
+                        </div>:""
+                        }       
+                        {
+                        (cart&&cart.some((item)=>item.id===id))?<button className="Btn-cart" onClick={()=>Delete(id)}>Delete</button>:<button className="Btn-cart" onClick={addElement}>Add to cart</button>
+                        }
                     </div>
                 </div>
                 <span className="font-roboto">{soldOut?"SOLD OUT":""}</span>
@@ -86,10 +94,13 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
         
     )
 }
-export const CartNav = ()=>{
+export const CartNav = ({cart})=>{
+    let count = cart&&cart.reduce((e,v)=>e=e+v.price,0)
     return (
         <div className="cart-nav">
-            <p>hello</p>
+            <p>
+                {count}
+            </p>
         </div>
     )
 }
