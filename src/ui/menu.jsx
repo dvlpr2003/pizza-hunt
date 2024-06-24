@@ -48,7 +48,14 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
         let FilteredItems = cart.filter((i)=>i.id !== id)
         setCart(FilteredItems)
     }
-    
+    const Dec = (id)=>{
+        let Decreaze = cart.findIndex((item)=>item.id === id)
+        if (Decreaze !== -1){
+            const newArry = [...cart];
+            newArry.splice(Decreaze, 1);
+            setCart(newArry)
+        }
+    }
     const addElement=()=> {
         let cartItems = {
             id:id,
@@ -59,6 +66,9 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
         if (cart) return setCart(()=>[...cart,cartItems])
         setCart([cartItems])
         
+    }
+    const Count = ()=>{
+
     }
 
     return(
@@ -78,8 +88,8 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
                     <div className="flex item-center gap-1rem price-options margin-left-auto ">
                         {
                         (cart&&cart.some((item)=>item.id===id))?<div className="flex item-center gap ">
-                            <button className="inc-dec-btn">-</button>
-                            <span>1</span>
+                            <button className="inc-dec-btn" onClick={()=>Dec(id)}>-</button>
+                            <span className="font-roboto">{cart.filter((item)=>item.id === id).length}</span>
                             <button className="inc-dec-btn" onClick={addElement}>+</button>
                         </div>:""
                         }       
