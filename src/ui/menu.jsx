@@ -107,10 +107,17 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
 export const CartNav = ({cart})=>{
     let count = cart&&cart.reduce((e,v)=>e=e+v.price,0)
     return (
-        <div className="cart-nav">
-            <p>
-                {count}
-            </p>
+        <div className="cart-nav flex item-center pad-r-l font-roboto bold">
+            <div className="flex center gap ">
+            <span>{cart.length}</span>
+            <span>Pizza</span>
+            </div>
+            <div className="flex center">
+                <span>€{count}.00</span>
+            </div>
+            <div className="open-cart flex center">
+                <span>OPEN CART </span>
+            </div>
         </div>
     )
 }
