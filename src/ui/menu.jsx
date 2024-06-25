@@ -28,7 +28,7 @@ const MenuItems = ({Menudata,setCart,cart})=>{
         
         <div>
 
-            <div className="flex flex-column center width-100 gap  ">
+            <div className="flex flex-column center width-100 gap ">
 
             {
             Menudata.map((e)=><Items key = {e.id} id={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients} setCart={setCart} cart={cart}/>)

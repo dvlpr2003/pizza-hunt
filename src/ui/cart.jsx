@@ -11,16 +11,25 @@ const Cart = ({cart,setCart})=>{
       const FilteredData = findUniqueObjects(cart)
 
     return(
-        <div className="cart-main flex flex-column center gap-1rem font-roboto">
+        <div className="cart-main flex flex-column gap-1rem font-roboto">
             <Link to="/menu">Back to menu</Link>
             <h2>Your cart, h</h2>
-            {FilteredData.map((e)=><Items name={e.name} id={e.id} cart={cart} price = {e.price} ingredients={e.ingredients}setCart={setCart}/>)}
+            <Items FilteredData={FilteredData} cart={cart} setCart={setCart}/>
     
       
         </div>
     )
 }
-const Items = ({name,cart,id,price,ingredients, setCart})=>{
+const Items = ({FilteredData,cart,setCart})=>{
+
+    return(
+        <div className="width-100  font-roboto  gap-1rem ">
+            {FilteredData.map((e)=><ItemList  name={e.name} id={e.id} cart={cart} price = {e.price} ingredients={e.ingredients} setCart={setCart}/>)}
+            
+        </div>
+    )
+}
+const ItemList =({name,cart,id,price,ingredients, setCart})=>{
     const Delete = (id)=>{
         let FilteredItems = cart.filter((i)=>i.id !== id)
         setCart(FilteredItems)
@@ -44,8 +53,7 @@ const Items = ({name,cart,id,price,ingredients, setCart})=>{
         setCart([cartItems])
     }
     return(
-        <div className="width-100 pad-t-b font-roboto border-bottom">
-            <div className="flex  cart-items flex-wrap">
+        <div className="flex  cart-items flex-wrap pad-t-b border-bottom ">
                     <div className="flex margin-right-auto flex-start center gap">
                         <span>{cart.filter((item)=>item.id === id).length}x</span>
                         <span>{name}</span>
@@ -64,7 +72,10 @@ const Items = ({name,cart,id,price,ingredients, setCart})=>{
                     </div>
      
             </div>
-        </div>
     )
 }
+
+
+
+
 export default Cart;
