@@ -1,13 +1,18 @@
 
 import "../App.css"
-import { useEffect ,useState} from "react"
 import getData from "../services/api"
 import { useLoaderData } from "react-router-dom"
 
-const Menu = ()=>{
-    const [cart,setCart]=useState(null)
+const Menu = ({cart,setCart})=>{
+    // const [cartItems,setCartItems]=useState()
     const menu = useLoaderData()
-    
+   
+    // localStorage.setItem("items",JSON.stringify(menu))
+    // useEffect(()=>{
+    //     const item = JSON.parse(localStorage.getItem)
+
+    // },[])
+   
     return(
         <>
         {
