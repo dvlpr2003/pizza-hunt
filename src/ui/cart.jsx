@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Cart = ({cart})=>{
+const Cart = ({cart,setCart})=>{
     const findUniqueObjects = (array) => {
         const seen = new Set();
         return array.filter(item => {
@@ -13,13 +13,35 @@ const Cart = ({cart})=>{
     return(
         <div className="cart-main flex flex-column center gap-1rem">
             <Link to="/menu">Back to menu</Link>
-            {FilteredData.map((e)=><Items name={e.name} id={e.id} cart={cart}/>)}
+            {FilteredData.map((e)=><Items name={e.name} id={e.id} cart={cart} price = {e.price} ingredients={e.ingredients}setCart={setCart}/>)}
     
       
         </div>
     )
 }
-const Items = ({name,cart,id})=>{
+const Items = ({name,cart,id,price,ingredients, setCart})=>{
+    const Delete = (id)=>{
+        let FilteredItems = cart.filter((i)=>i.id !== id)
+        setCart(FilteredItems)
+    }
+    const Dec = (id)=>{
+        let Decreaze = cart.findIndex((item)=>item.id === id)
+        if (Decreaze !== -1){
+            const newArry = [...cart];
+            newArry.splice(Decreaze, 1);
+            setCart(newArry)
+        }
+    }
+    const addElement=()=> {
+        let cartItems = {
+            id:id,
+            name:name,
+            price:price,
+            ingredients:ingredients
+        }
+        if (cart) return setCart(()=>[...cart,cartItems])
+        setCart([cartItems])
+    }
     return(
         <div className="width-100 pad-t-b font-roboto border-bottom">
             <div className="flex  cart-items flex-wrap">
@@ -28,14 +50,14 @@ const Items = ({name,cart,id})=>{
                         <span>{name}</span>
                     </div>
                     <div className="flex item-center margin-left-auto flex-end gap-1rem">
-                        <span>€14.00</span>
+                        <span>€{cart.filter((item)=>item.id === id).length * price}</span>
                         <div className="flex gap-1rem center">
                             <div className="flex gap center">
-                            <button className="inc-dec-btn">-</button>
-                            <span className="font-roboto">1</span>
-                            <button className="inc-dec-btn" >+</button>
+                            <button className="inc-dec-btn" onClick={()=>Dec(id)}>-</button>
+                            <span className="font-roboto">{cart.filter((item)=>item.id === id).length}</span>
+                            <button className="inc-dec-btn" onClick={addElement}>+</button>
                             </div>
-                            <button className="Btn-cart" >Delete</button>
+                            <button className="Btn-cart" onClick={()=>Delete(id)}>Delete</button>
                         </div>
 
                     </div>

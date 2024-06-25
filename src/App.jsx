@@ -33,7 +33,7 @@ function App() {
         },
         {
           path:"cart",
-          element:(<Cart cart={cart}/>),
+          element:(<Cart cart={cart} setCart={setCart}/>),
           
         }
       ]
