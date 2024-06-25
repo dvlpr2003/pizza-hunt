@@ -88,6 +88,19 @@ homecontent {
     margin-top: 2rem;
     font-weight: bold;
 }
+.margin-left-auto{
+    margin-left: auto;
+}
+.margin-right-auto{
+    margin-right: auto;
+}
+.flex-start {
+    justify-content:flex-start;
+}
+
+.flex-end {
+    justify-self:flex-end ;
+}
 
 .home-cont-txt {
     font-family: Roboto,sans-serif;
@@ -198,10 +211,18 @@ homecontent {
     padding-right:.3rem ;
 
 }
-
+.cart-items {
+    width: 100%;
+}
+.cart-main  {
+    width: 35rem;
+}
 
 @media(min-width:50px) and (max-width:570px){
     .pizza-item{
+        width: 100%;
+    }
+    .cart-main {
         width: 100%;
     }
 }
