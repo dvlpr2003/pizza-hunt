@@ -3,6 +3,9 @@
     box-sizing: border-box;
 
 }
+a{
+    text-decoration: none;
+}
 main{
     overflow-x: scroll;
     width: auto;
@@ -66,8 +69,14 @@ main{
     padding-left: 1rem;
     padding-right: 1rem;
 }
+.white-color {
+    color: #ffffff;
 
+}
 
+.border-bottom {
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
 .font-roboto{
     font-family: "Roboto", sans-serif;
 }

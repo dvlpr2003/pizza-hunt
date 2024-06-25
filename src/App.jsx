@@ -25,9 +25,6 @@ function App() {
         {
           path:"/",
           element:(<Home/>),
-          
-          
-
         },
         {
           path:"menu",
@@ -47,10 +44,7 @@ function App() {
 
   return (
     <>
-{/* <div class="loader"></div> */}
      <RouterProvider router={router} />
-     {/* <App1/> */}
-     
     </>
   )
 }

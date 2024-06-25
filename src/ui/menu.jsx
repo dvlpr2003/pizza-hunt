@@ -1,7 +1,7 @@
 
 import "../App.css"
 import getData from "../services/api"
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 
 const Menu = ({cart,setCart})=>{
     // const [cartItems,setCartItems]=useState()
@@ -109,8 +109,8 @@ export const CartNav = ({cart})=>{
             <div className="flex center">
                 <span>€{count}.00</span>
             </div>
-            <div className="open-cart flex center">
-                <span>OPEN CART </span>
+            <div className="open-cart flex center ">
+                <Link to="/cart" className="white-color" >open cart</Link>
             </div>
         </div>
     )
