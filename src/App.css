@@ -229,6 +229,26 @@ homecontent {
 .cart-main  {
     width: 35rem;
 }
+.cart-btn-container {
+    display: flex;
+    gap: 2rem;
+}
+.cart-btn{
+    
+    height: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid rgb(123, 121, 121);
+    background-color: inherit;
+    
+   
+}
+.cart-btn-container button:first-child{
+    border: 1px solid #003cff;
+    background-color: #003cff;
+    color: white;
+
+}
+
 
 @media(min-width:50px) and (max-width:570px){
     .pizza-item{

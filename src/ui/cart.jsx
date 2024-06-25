@@ -15,6 +15,7 @@ const Cart = ({cart,setCart})=>{
             <Link to="/menu">Back to menu</Link>
             <h2>Your cart, h</h2>
             <Items FilteredData={FilteredData} cart={cart} setCart={setCart}/>
+            <CartBtn setCart={setCart}/>
     
       
         </div>
@@ -75,7 +76,18 @@ const ItemList =({name,cart,id,price,ingredients, setCart})=>{
     )
 }
 
+const CartBtn = ({setCart})=>{
+    function Clear(){
+        setCart([])
 
+    }
+    return(
+        <div className="cart-btn-container">
+            <button className="cart-btn pad-r-l">ORDER PIZZA</button>
+            <button onClick={Clear} className="cart-btn pad-r-l">CLEAR CART</button>
+        </div>
+    )
+}
 
 
 export default Cart;
