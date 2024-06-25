@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Cart = ({cart,setCart})=>{
+    console.log(cart)
     const findUniqueObjects = (array) => {
         const seen = new Set();
         return array.filter(item => {
@@ -15,7 +16,7 @@ const Cart = ({cart,setCart})=>{
             <Link to="/menu">Back to menu</Link>
             <h2>Your cart, h</h2>
             <Items FilteredData={FilteredData} cart={cart} setCart={setCart}/>
-            <CartBtn setCart={setCart}/>
+            <CartBtn setCart={setCart} cart={cart}/>
     
       
         </div>
@@ -76,18 +77,28 @@ const ItemList =({name,cart,id,price,ingredients, setCart})=>{
     )
 }
 
-const CartBtn = ({setCart})=>{
+const CartBtn = ({setCart,cart})=>{
     function Clear(){
         setCart([])
 
     }
     return(
+        <>
         <div className="cart-btn-container">
-            <button className="cart-btn pad-r-l">ORDER PIZZA</button>
-            <button onClick={Clear} className="cart-btn pad-r-l">CLEAR CART</button>
+            {
+    (cart.length>0)?<div className="flex gap-1rem">
+                    <button className="cart-btn pad-r-l white-color">ORDER PIZZA</button>
+<button  className="cart-btn pad-r-l" onClick={Clear}>CLEAR CART</button>
+                </div>:<h3>Your cart is still empty. Start adding some pizzas :)</h3>
+            }
         </div>
+        </>
+    
+
     )
 }
+
+
 
 
 export default Cart;
