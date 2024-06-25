@@ -11,8 +11,9 @@ const Cart = ({cart,setCart})=>{
       const FilteredData = findUniqueObjects(cart)
 
     return(
-        <div className="cart-main flex flex-column center gap-1rem">
+        <div className="cart-main flex flex-column center gap-1rem font-roboto">
             <Link to="/menu">Back to menu</Link>
+            <h2>Your cart, h</h2>
             {FilteredData.map((e)=><Items name={e.name} id={e.id} cart={cart} price = {e.price} ingredients={e.ingredients}setCart={setCart}/>)}
     
       
