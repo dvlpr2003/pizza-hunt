@@ -87,7 +87,7 @@ const CartBtn = ({setCart,cart})=>{
         <div className="cart-btn-container">
             {
     (cart.length>0)?<div className="flex gap-1rem">
-                    <button className="cart-btn pad-r-l white-color">ORDER PIZZA</button>
+                    <button className="cart-btn pad-r-l white-color"><Link to="/order/new">ORDER PIZZA</Link></button>
 <button  className="cart-btn pad-r-l" onClick={Clear}>CLEAR CART</button>
                 </div>:<h3>Your cart is still empty. Start adding some pizzas :)</h3>
             }

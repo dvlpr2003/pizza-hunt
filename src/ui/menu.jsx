@@ -99,7 +99,11 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
     )
 }
 export const CartNav = ({cart})=>{
-    let count = cart&&cart.reduce((e,v)=>e=e+v.price,0)
+    function cout (e,v){
+        return e+v.price
+
+    }
+    let count = cart&&cart.reduce((e,v)=>cout(e,v),0)
     return (
         <div className="cart-nav flex item-center pad-r-l font-roboto bold">
             <div className="flex center gap ">

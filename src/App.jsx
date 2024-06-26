@@ -17,6 +17,7 @@ import Order from "./ui/order";
 
 function App() {
   const [cart,setCart]=useState(null)
+  const[priority,setPriority] =useState(false)
   
 
   const router = createBrowserRouter([
@@ -38,7 +39,7 @@ function App() {
         },
         {
           path:"order/new",
-          element:(<Order/>), 
+          element:(<Order cart={cart} priority={priority} setPriority={setPriority}/>), 
         }
       ]
     },
