@@ -1,7 +1,10 @@
+import axios from "axios";
+import { useState } from "react";
 
 
 const Order =({cart,priority,setPriority})=>{
-    console.log(cart)
+    const [location, setLocation] = useState(null);
+    console.log(location)
     function cout(e,v){
         if (priority){
             if (v.price === 12) return e+v.price+2.40;
@@ -9,8 +12,35 @@ const Order =({cart,priority,setPriority})=>{
             if (v.price === 16) return e+v.price+3.20;
             // console.log("hello")
         }
-        return e+v.price
+        return e + v.price
     }
+   function getGps(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                try {
+                    const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
+                    // console.log(response)
+                    setLocation(response.data)
+                }catch(error){
+                    console.log(error)
+                }
+
+                // setLocation({
+                // latitude: position.coords.latitude,
+                // longitude: position.coords.longitude,
+                // });
+            },
+            (error) => {
+                console.error("Error getting location:", error);
+            }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+        }
+    }
+
+
     return(
         <div className="flex flex-column  gap-1rem font-roboto order-container">
             <h4>Ready to order? Let's go!</h4>
@@ -29,8 +59,8 @@ const Order =({cart,priority,setPriority})=>{
                     <div className="flex gap-1rem font-roboto item-center">
                     <label htmlFor="address">Address</label>
                     <div className="width-100 position-relative ">
-                    <input type="text" id="address"  className="width-100 " />
-                    <button className="position-absolute gprs pad-r-l">GET POSITION</button>
+                    <input type="text" id="address"  className="width-100 " value={`${location&&location["city"]},${location&&location["principalSubdivision"]}`} />
+                    <button className="position-absolute gprs pad-r-l" onClick={getGps}>GET POSITION</button>
                     </div>
 
 
