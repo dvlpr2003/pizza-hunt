@@ -247,13 +247,32 @@ homecontent {
     background-color: #003cff;
    
 }
-
-
+.order-btn {
+    background-color: #003cff;
+    border: 1px solid #003cff;
+    height: 2.5rem;
+    border-radius: 10px;
+}
+.order-container{
+    width: 35rem;
+}
+form input{
+    border-radius: 20px;
+    height:2.7rem;
+    border: 1px solid rgb(188, 188, 188);
+    padding-left: 1rem;
+}
+form label {
+    width: 10rem;
+}
 @media(min-width:50px) and (max-width:570px){
     .pizza-item{
         width: 100%;
     }
     .cart-main {
+        width: 100%;
+    }
+    .order-container{
         width: 100%;
     }
 }

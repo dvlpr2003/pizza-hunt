@@ -12,6 +12,7 @@ import {
 import AppLayout from "./AppLayout/AppLayout";
 import getData from "./services/api";
 import Cart from "./ui/cart";
+import Order from "./ui/order";
 
 
 function App() {
@@ -34,7 +35,10 @@ function App() {
         {
           path:"cart",
           element:(<Cart cart={cart} setCart={setCart}/>),
-          
+        },
+        {
+          path:"order/new",
+          element:(<Order/>), 
         }
       ]
     },
