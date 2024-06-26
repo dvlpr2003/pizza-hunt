@@ -6,6 +6,10 @@
 button {
     cursor: pointer;
 }
+button:hover{
+    background-color: #2054fb;
+    border: 1px solid #2054fb;
+}
 a{
     text-decoration: none;
 }
@@ -37,6 +41,12 @@ main{
 
     position:sticky;
     top: 0;
+}
+.position-absolute {
+    position: absolute;
+}
+.position-relative {
+    position: relative;
 }
 .bold {
     font-weight: bold;
@@ -265,6 +275,19 @@ form input{
 form label {
     width: 10rem;
 }
+.gprs{
+    top: .4rem;
+
+    left: 9rem;
+    right: .5rem;
+    width: auto;
+    height: 2rem;
+    border: 1px solid #003cff;
+    color: white;
+    background-color: #003cff;
+    border-radius: 20px;
+
+}
 @media(min-width:50px) and (max-width:570px){
     .pizza-item{
         width: 100%;
@@ -274,6 +297,9 @@ form label {
     }
     .order-container{
         width: 100%;
+    }
+    .gprs {
+        left: 4rem;
     }
 }
 

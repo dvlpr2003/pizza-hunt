@@ -1,8 +1,8 @@
 const Order =()=>{
     return(
-        <div className="flex flex-column  gap-1rem font-roboto border order-container">
+        <div className="flex flex-column  gap-1rem font-roboto order-container">
             <h4>Ready to order? Let's go!</h4>
-            <div className="border">
+            <div className="">
                 <form className="flex flex-column gap-1rem" >
                     <div className="flex gap-1rem font-roboto">
 
@@ -16,7 +16,11 @@ const Order =()=>{
                     </div>
                     <div className="flex gap-1rem font-roboto">
                     <label htmlFor="address">Address</label>
-                    <input type="text" id="address"  className="width-100"/>
+                    <div className="width-100 position-relative">
+                    <input type="text" id="address"  className="width-100 "/>
+                    <button className="position-absolute gprs pad-r-l">GET POSITION</button>
+                    </div>
+
 
                     </div>
                 </form>
