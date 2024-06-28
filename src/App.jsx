@@ -1,24 +1,33 @@
 import Home from "./ui/Home"
-import Menu  from "./ui/menu";
+import Menu ,{menuloader}from "./ui/menu";
 
 
 import "./App.css"
-import { useEffect ,useState} from "react"
+import { useState} from "react"
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import AppLayout from "./AppLayout/AppLayout";
-import getData from "./services/api";
 import Cart from "./ui/cart";
 import Order from "./ui/order";
-
+// function reducer(state,action){
+//   if (action.type === "del"){
+//     let filteredItems = state.filter((i)=>i.id !== action.id)
+//     return filteredItems;
+//   }
+//   if (action.type === "add"){
+//     return ([action.item]);
+//   }
+// }
 
 function App() {
-  const [cart,setCart]=useState(null)
-  const[priority,setPriority] =useState(false)
+ 
   
+  const[priority,setPriority] =useState(false)
+
+
 
   const router = createBrowserRouter([
     {
@@ -30,16 +39,16 @@ function App() {
         },
         {
           path:"menu",
-          element:(<Menu cart={cart} setCart={setCart}/>),
+          element:(<Menu />),
           loader:menuloader,
         },
         {
           path:"cart",
-          element:(<Cart cart={cart} setCart={setCart}/>),
+          element:(<Cart />),
         },
         {
           path:"order/new",
-          element:(<Order cart={cart} priority={priority} setPriority={setPriority}/>), 
+          element:(<Order  priority={priority} setPriority={setPriority}/>), 
         }
       ]
     },
@@ -54,10 +63,8 @@ function App() {
   )
 }
 
-async function menuloader(){
-  const menu = await getData()
-  return menu
-}
+
+
 
 export default App
 

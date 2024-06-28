@@ -1,22 +1,43 @@
 
+import { useReducer } from "react"
 import "../App.css"
 import getData from "../services/api"
 import { Link, useLoaderData } from "react-router-dom"
+function reducer(state,action){
+  
+    if (action.type === "add"){
+       
+       if (state) return [...state,action.cartItems]
+       return([action.cartItems])
+    }
+    if (action.type === "dec"){
+        let Decreaze = state.findIndex((item)=>item.id === action.id)
+        if (Decreaze !== -1){
+            const newArry = [...state];
+            newArry.splice(Decreaze, 1);
+            return [...newArry]
+        }
+    }
+    if (action.type === "delete"){
+        let FilteredItems = state.filter((i)=>i.id !== action.id)
+        return([...FilteredItems])
 
-const Menu = ({cart,setCart})=>{
-    // const [cartItems,setCartItems]=useState()
+    }
+    
+
+
+
+}
+const Menu = ()=>{
+    const [cart,setCarts]=useReducer(reducer,[])
+    console.log(cart)
     const menu = useLoaderData()
-   
-    // localStorage.setItem("items",JSON.stringify(menu))
-    // useEffect(()=>{
-    //     const item = JSON.parse(localStorage.getItem)
 
-    // },[])
    
     return(
         <>
         {
-            menu&&<MenuItems Menudata={menu} setCart={setCart} cart={cart}/>
+            menu&&<MenuItems Menudata={menu} setCart={setCarts} cart={cart}/>
         }
         {(cart === null) || (cart.length >0)&&<CartNav cart={cart}/>}
         </>
@@ -40,29 +61,12 @@ const MenuItems = ({Menudata,setCart,cart})=>{
     )
 }
 const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
-    const Delete = (id)=>{
-        let FilteredItems = cart.filter((i)=>i.id !== id)
-        setCart(FilteredItems)
-    }
-    const Dec = (id)=>{
-        let Decreaze = cart.findIndex((item)=>item.id === id)
-        if (Decreaze !== -1){
-            const newArry = [...cart];
-            newArry.splice(Decreaze, 1);
-            setCart(newArry)
-        }
-    }
-    const addElement=()=> {
         let cartItems = {
             id:id,
             name:name,
             price:price,
             ingredients:ingredients
         }
-        if (cart) return setCart(()=>[...cart,cartItems])
-        setCart([cartItems])
-        
-    }
 
 
     return(
@@ -82,13 +86,13 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
                     <div className="flex item-center gap-1rem price-options margin-left-auto ">
                         {
                         (cart&&cart.some((item)=>item.id===id))?<div className="flex item-center gap ">
-                            <button className="inc-dec-btn" onClick={()=>Dec(id)}>-</button>
+                            <button className="inc-dec-btn" onClick={()=>setCart({type:"dec",id:id})}>-</button>
                             <span className="font-roboto">{cart.filter((item)=>item.id === id).length}</span>
-                            <button className="inc-dec-btn" onClick={addElement}>+</button>
+                            <button className="inc-dec-btn" onClick={()=>setCart({type:"add",cartItems:cartItems})}>+</button>
                         </div>:""
                         }       
                         {
-                        (cart&&cart.some((item)=>item.id===id))?<button className="Btn-cart" onClick={()=>Delete(id)}>Delete</button>:<button className="Btn-cart" onClick={addElement}>Add to cart</button>
+                        (cart&&cart.some((item)=>item.id===id))?<button className="Btn-cart" onClick={()=>setCart({type:"delete",id:id})}>Delete</button>:<button className="Btn-cart" onClick={()=>setCart({type:"add",cartItems:cartItems})}>Add to cart</button>
                         }
                     </div>
                 </div>
@@ -119,6 +123,10 @@ export const CartNav = ({cart})=>{
         </div>
     )
 }
-
+export async function menuloader(){
+    const menu = await getData()
+    
+    return menu 
+  }
 
 export default Menu;
