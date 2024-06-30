@@ -1,36 +1,35 @@
 
-import { useReducer } from "react"
-import "../App.css"
-import getData from "../services/api"
-import { Link, useLoaderData } from "react-router-dom"
-function reducer(state,action){
+import "../App.css";
+import { useDispatch } from "react-redux"
+import getData from "../services/api";
+import { Link, useLoaderData } from "react-router-dom";
+import {useSelector} from "react-redux";
+import {addToCart,decreaseItems,deleteItems} from "./cartSlice"
+// function reducer(state,action){
   
-    if (action.type === "add"){
+//     if (action.type === "add"){
        
-       if (state) return [...state,action.cartItems]
-       return([action.cartItems])
-    }
-    if (action.type === "dec"){
-        let Decreaze = state.findIndex((item)=>item.id === action.id)
-        if (Decreaze !== -1){
-            const newArry = [...state];
-            newArry.splice(Decreaze, 1);
-            return [...newArry]
-        }
-    }
-    if (action.type === "delete"){
-        let FilteredItems = state.filter((i)=>i.id !== action.id)
-        return([...FilteredItems])
+//        if (state) return [...state,action.cartItems]
+//        return([action.cartItems])
+//     }
+//     if (action.type === "dec"){
+//         let Decreaze = state.findIndex((item)=>item.id === action.id)
+//         if (Decreaze !== -1){
+//             const newArry = [...state];
+//             newArry.splice(Decreaze, 1);
+//             return [...newArry]
+//         }
+//     }
+//     if (action.type === "delete"){
+//         let FilteredItems = state.filter((i)=>i.id !== action.id)
+//         return([...FilteredItems])
 
-    }
-    
-
-    
-
-
-}
+//     }
+// }
 const Menu = ()=>{
-    const [cart,setCarts]=useReducer(reducer,[])
+    
+    // const [cart,setCarts]=useReducer(reducer,[])
+    const cart =useSelector((state)=>state.cart.cart)
     console.log(cart)
     const menu = useLoaderData()
 
@@ -38,9 +37,9 @@ const Menu = ()=>{
     return(
         <>
         {
-            menu&&<MenuItems Menudata={menu} setCart={setCarts} cart={cart}/>
+            menu&&<MenuItems Menudata={menu} cart={cart}/>
         }
-        {(cart === null) || (cart.length >0)&&<CartNav cart={cart}/>}
+        {((cart === null) || (cart.length >0))&&<CartNav cart={cart}/>}
         </>
     )
 }
@@ -53,7 +52,7 @@ const MenuItems = ({Menudata,setCart,cart})=>{
             <div className="flex flex-column center width-100 gap ">
 
             {
-            Menudata.map((e)=><Items key = {e.id} id={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients} setCart={setCart} cart={cart}/>)
+            Menudata.map((e)=><Items key = {e.id} id={e.id} name={e.name} price ={e.unitPrice} imageurl ={e.imageUrl} soldOut={e.soldOut} ingredients={e.ingredients}  cart={cart}/>)
             }
 
             </div>
@@ -61,14 +60,14 @@ const MenuItems = ({Menudata,setCart,cart})=>{
         </div>
     )
 }
-const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
+const Items =({name,price,imageurl,soldOut,ingredients,id,cart})=>{
         let cartItems = {
             id:id,
             name:name,
             price:price,
             ingredients:ingredients
         }
-
+        const dispatch = useDispatch()
 
     return(
        
@@ -87,13 +86,13 @@ const Items =({name,price,imageurl,soldOut,ingredients,id,setCart,cart})=>{
                     <div className="flex item-center gap-1rem price-options margin-left-auto ">
                         {
                         (cart&&cart.some((item)=>item.id===id))?<div className="flex item-center gap ">
-                            <button className="inc-dec-btn" onClick={()=>setCart({type:"dec",id:id})}>-</button>
+                            <button className="inc-dec-btn" onClick={()=>dispatch(decreaseItems(id))}>-</button>
                             <span className="font-roboto">{cart.filter((item)=>item.id === id).length}</span>
-                            <button className="inc-dec-btn" onClick={()=>setCart({type:"add",cartItems:cartItems})}>+</button>
+                            <button className="inc-dec-btn" onClick={()=>dispatch(addToCart(cartItems))}>+</button>
                         </div>:""
                         }       
                         {
-                        (cart&&cart.some((item)=>item.id===id))?<button className="Btn-cart" onClick={()=>setCart({type:"delete",id:id})}>Delete</button>:<button className="Btn-cart" onClick={()=>setCart({type:"add",cartItems:cartItems})}>Add to cart</button>
+                        (cart&&cart.some((item)=>item.id===id))?<button className="Btn-cart" onClick={()=>dispatch(deleteItems(id))}>Delete</button>:<button className="Btn-cart" onClick={()=>dispatch(addToCart(cartItems))}>Add to cart</button>
                         }
                     </div>
                 </div>

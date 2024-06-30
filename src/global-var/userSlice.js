@@ -22,3 +22,5 @@ const userSlice = createSlice(
 export default userSlice.reducer;
 
 export const {updateName} = userSlice.actions
+
+
