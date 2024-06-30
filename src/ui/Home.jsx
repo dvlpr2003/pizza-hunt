@@ -43,7 +43,7 @@ const HomeContent = ()=>{
             <p className="p-cont-txt" >👋 Welcome! Please start by telling us your name:</p>
             <form className="flex flex-column gap-1rem"> 
                 <input type="text" className="input-border pad-t-b pad-r-l transitions radius name-input" placeholder="Your full name" onChange={(e)=>setName(e.target.value)}/>
-                <button onClick={(e)=>handleEvent(e)}>continue</button>
+                <button onClick={(e)=>handleEvent(e)} className="order-btn white-color">continue</button>
             </form>
 
         </homecontent>
