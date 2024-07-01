@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import {useSelector } from "react-redux";
 
+const Order =()=>{
+    const name = useSelector((state)=>state.user.username)
+    const cart = useSelector((state)=>state.cart.cart)
 
-const Order =({cart,priority,setPriority})=>{
+    const[priority,setPriority] =useState(false)
+
     const [location, setLocation] = useState(null);
 
     function cout(e,v){
@@ -49,7 +54,7 @@ const Order =({cart,priority,setPriority})=>{
                     <div className="flex gap-1rem font-roboto item-center">
 
                     <label htmlFor="first-name">Name</label>
-                    <input type="text" id="first-name" className="width-100" required/>
+                    <input type="text" id="first-name" className="width-100" required value={name}/>
                     </div>
                     <div className="flex gap-1rem font-roboto item-center">
                     <label htmlFor="ph-num">Phone number</label>

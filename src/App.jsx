@@ -25,7 +25,6 @@ import Order from "./ui/order";
 function App() {
  
   
-  const[priority,setPriority] =useState(false)
 
 
 
@@ -48,7 +47,7 @@ function App() {
         },
         {
           path:"order/new",
-          element:(<Order  priority={priority} setPriority={setPriority}/>), 
+          element:(<Order/>), 
         }
       ]
     },
