@@ -6,9 +6,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import {useSelector} from "react-redux";
 import {addToCart,decreaseItems,deleteItems} from "./cartSlice"
 // function reducer(state,action){
-  
 //     if (action.type === "add"){
-       
 //        if (state) return [...state,action.cartItems]
 //        return([action.cartItems])
 //     }
@@ -23,7 +21,6 @@ import {addToCart,decreaseItems,deleteItems} from "./cartSlice"
 //     if (action.type === "delete"){
 //         let FilteredItems = state.filter((i)=>i.id !== action.id)
 //         return([...FilteredItems])
-
 //     }
 // }
 const Menu = ()=>{

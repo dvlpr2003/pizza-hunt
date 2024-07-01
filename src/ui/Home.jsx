@@ -2,25 +2,13 @@ import {  useState } from "react"
 import { useDispatch } from "react-redux"
 import { updateName } from "../global-var/userSlice"
 import { useNavigate } from "react-router-dom"
-
-
-
 const Home = ()=>{
-    
-   
-
-
-
     return(
         <>
             <HomeContent />
         </>
     )
-
 }
-
-
-
 const HomeContent = ()=>{
     const nav=useNavigate()
     const [name,setName]=useState()
@@ -30,11 +18,6 @@ const HomeContent = ()=>{
         dispatch(updateName(name))
         if (!name) return;
         nav("/menu")
-
-        
-    
-    
-    
     }
     return(
         <homecontent className="flex flex-column center gap">
