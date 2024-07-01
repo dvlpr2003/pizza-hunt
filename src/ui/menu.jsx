@@ -40,7 +40,7 @@ const Menu = ()=>{
         </>
     )
 }
-const MenuItems = ({Menudata,setCart,cart})=>{
+const MenuItems = ({Menudata,cart})=>{
  
     return(
         

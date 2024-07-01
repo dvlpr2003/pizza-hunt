@@ -29,6 +29,9 @@ const cartSlicer = createSlice(
                 let FilteredItems = state.cart.filter((i)=>i.id !== action.payload)
                 state.cart = FilteredItems
 
+            },
+            clearCart(state,action){
+                state.cart = []
             }
 
 
@@ -36,6 +39,6 @@ const cartSlicer = createSlice(
     }
 )
 
-export const {addToCart,decreaseItems,deleteItems} = cartSlicer.actions
+export const {addToCart,decreaseItems,deleteItems,clearCart} = cartSlicer.actions
 
 export default cartSlicer.reducer;

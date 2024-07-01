@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Order =({cart,priority,setPriority})=>{
     const [location, setLocation] = useState(null);
-    console.log(location)
+
     function cout(e,v){
         if (priority){
             if (v.price === 12) return e+v.price+2.40;
