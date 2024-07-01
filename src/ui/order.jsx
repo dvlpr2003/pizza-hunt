@@ -19,7 +19,8 @@ const Order =()=>{
         }
         return e + v.price
     }
-   function getGps(){
+   function getGps(e){
+    e.preventDefault()
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
             async (position) => {
@@ -65,7 +66,7 @@ const Order =()=>{
                     <label htmlFor="address">Address</label>
                     <div className="width-100 position-relative ">
                     <input type="text" id="address"  className="width-100 " value={`${location&&location["city"]},${location&&location["principalSubdivision"]}`} />
-                    <button className="position-absolute gprs pad-r-l" onClick={getGps}>GET POSITION</button>
+                    <button className="position-absolute gprs pad-r-l" onClick={(e)=>getGps(e)}>GET POSITION</button>
                     </div>
 
 
