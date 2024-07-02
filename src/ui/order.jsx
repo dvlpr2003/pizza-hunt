@@ -8,7 +8,7 @@ const Order =()=>{
 
     const[priority,setPriority] =useState(false)
 
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState('');
 
     function cout(e,v){
         if (priority){
@@ -65,7 +65,7 @@ const Order =()=>{
                     <div className="flex gap-1rem font-roboto item-center">
                     <label htmlFor="address">Address</label>
                     <div className="width-100 position-relative ">
-                    <input type="text" id="address"  className="width-100 " value={`${location&&location["city"]},${location&&location["principalSubdivision"]}`} />
+                    <input type="text" id="address"  className="width-100 " value={`${location&&location["city"]} ${location&&location["principalSubdivision"]}`} />
                     <button className="position-absolute gprs pad-r-l" onClick={(e)=>getGps(e)}>GET POSITION</button>
                     </div>
 

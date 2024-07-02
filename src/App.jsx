@@ -1,6 +1,6 @@
 import Home from "./ui/Home"
 import Menu ,{menuloader}from "./ui/menu";
-
+import Error from "./Error/error";
 
 import "./App.css"
 import { useState} from "react"
@@ -31,6 +31,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element:(<AppLayout/>),
+      errorElement:(<Error/>),
       children:[
         {
           path:"/",
