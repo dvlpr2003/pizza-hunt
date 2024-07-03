@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import {useSelector } from "react-redux";
+import { getlocation } from "../services/getGeolocation";
 
 const Order =()=>{
     const name = useSelector((state)=>state.user.username)
@@ -23,23 +23,25 @@ const Order =()=>{
     e.preventDefault()
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                try {
-                    const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
-                    // console.log(response)
-                    setLocation(response.data)
-                }catch(error){
-                    console.log(error)
-                }
+                (position)=>{getlocation(position.coords.latitude,position.coords.longitude)}
+            // async (position) => {
+            //     try {
+            //         const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
+            //         // console.log(response)
+            //         setLocation(response.data)
+            //         console.log(response)
+            //     }catch(error){
+            //         console.log(error)
+            //     }
 
-                // setLocation({
-                // latitude: position.coords.latitude,
-                // longitude: position.coords.longitude,
-                // });
-            },
-            (error) => {
-                console.error("Error getting location:", error);
-            }
+            //     // setLocation({
+            //     // latitude: position.coords.latitude,
+            //     // longitude: position.coords.longitude,
+            //     // });
+            // },
+            // (error) => {
+            //     console.error("Error getting location:", error);
+            // }
             );
         } else {
             console.error("Geolocation is not supported by this browser.");
