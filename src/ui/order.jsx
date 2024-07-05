@@ -1,6 +1,7 @@
 import { useState } from "react";
-import {useSelector } from "react-redux";
-import { getlocation } from "../services/getGeolocation";
+import {useDispatch, useSelector } from "react-redux";
+// import { getlocation } from "../services/getGeolocation";
+import { fetchAddress } from "../global-var/userSlice";
 
 const Order =()=>{
     const name = useSelector((state)=>state.user.username)
@@ -9,6 +10,7 @@ const Order =()=>{
     const[priority,setPriority] =useState(false)
 
     const [location, setLocation] = useState('');
+    const dispatch = useDispatch()
 
     function cout(e,v){
         if (priority){
@@ -19,11 +21,14 @@ const Order =()=>{
         }
         return e + v.price
     }
-   function getGps(e){
+   async function getGps(e){
     e.preventDefault()
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position)=>{getlocation(position.coords.latitude,position.coords.longitude)}
+    dispatch(fetchAddress())
+  
+
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(
+        //         (position)=>{getlocation(position.coords.latitude,position.coords.longitude)}
             // async (position) => {
             //     try {
             //         const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
@@ -42,10 +47,10 @@ const Order =()=>{
             // (error) => {
             //     console.error("Error getting location:", error);
             // }
-            );
-        } else {
-            console.error("Geolocation is not supported by this browser.");
-        }
+        //     );
+        // } else {
+        //     console.error("Geolocation is not supported by this browser.");
+        // }
     }
 
 
