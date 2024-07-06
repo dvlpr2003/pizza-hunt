@@ -1,15 +1,16 @@
 import { useState } from "react";
 import {useDispatch, useSelector } from "react-redux";
-// import { getlocation } from "../services/getGeolocation";
-import { fetchAddress } from "../global-var/userSlice";
+import { fetchAddress} from "../global-var/userSlice";
 
 const Order =()=>{
     const name = useSelector((state)=>state.user.username)
+    const getAddress = useSelector((state)=>state.user.address)
+
     const cart = useSelector((state)=>state.cart.cart)
 
     const[priority,setPriority] =useState(false)
 
-    const [location, setLocation] = useState('');
+
     const dispatch = useDispatch()
 
     function cout(e,v){
@@ -72,7 +73,7 @@ const Order =()=>{
                     <div className="flex gap-1rem font-roboto item-center">
                     <label htmlFor="address">Address</label>
                     <div className="width-100 position-relative ">
-                    <input type="text" id="address"  className="width-100 " value={`${location&&location["city"]} ${location&&location["principalSubdivision"]}`} />
+                    <input type="text" id="address"  className="width-100 " defaultValue={getAddress} />
                     <button className="position-absolute gprs pad-r-l" onClick={(e)=>getGps(e)}>GET POSITION</button>
                     </div>
 

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { getLocation } from "../services/getGeolocation";
+
 // import { getlocation } from "../services/getGeolocation";
 
 function getPosition() {
