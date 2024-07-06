@@ -35,6 +35,10 @@ function getPosition() {
 
 const initialState = {
     username:"",
+    status:"idle",
+    position:{},
+    address:"",
+    error = ""
 
     
 }
@@ -48,7 +52,24 @@ const userSlice = createSlice(
             updateName(state,action){
                 state.username = action.payload;
             }
-        }
+          },
+          extraReducers:(builder)=>{
+            builder.addCase(fetchAddress.pending,(state,action)=>{
+              state.status = "loading"
+
+            })
+            .addCase(fetchAddress.fulfilled,(state,action)=>{
+              state.status = "idle";
+              state.position = action.payload.position;
+              state.address = action.payload.address;
+            })
+            .addCase(fetchAddress.rejected,(state,action)=>{
+              state.status="error";
+              state.error = "there is an error"
+              console.log(action.error)
+              
+            })
+          }
     }
 )
 
