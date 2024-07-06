@@ -38,7 +38,7 @@ const initialState = {
     status:"idle",
     position:{},
     address:"",
-    error = ""
+    error : ""
 
     
 }
